@@ -19,7 +19,30 @@ public class Logic1
     /// </summary>
     public bool CigarParty(int cigars, bool isWeekend)
     {
-        throw new NotImplementedException();
+        // 1. ja cigāru skaits ir zem 40 - false
+        if (cigars < 40)
+        {
+            return false;
+        }
+
+        // 2. ja ir brīvdiena, tad - true
+        if (isWeekend)
+        {
+            return true;
+        }
+
+        // 3. Ja cigāru skaits ir zem 60 tad atgriežam vērtību true (zinām jau, ka nav brīvdeina)
+        // if (cigars >= 40 $$ (isWeekend || cigars <= 60))
+        // if (isWeekend || cigars <= 60)
+        if (cigars <= 60)
+        {
+            return true;
+        }
+
+
+        // 4. visos citos gadījumos atgriežam - false 
+
+        return false;
     }
 
     /// <summary>
@@ -36,8 +59,22 @@ public class Logic1
     /// </summary>
     public int DateFashion(int you, int date)
     {
-        throw new NotImplementedException();
+        // 1. Ja kāds ir 2 vai mazāk, tad atgriežam vērtību 0
+        if (you <= 2 || date <= 2)
+        {
+            return 0;
+        }
+
+        // 2. Ja kāds ir ar 8 vai vairāk, tad atgriežam vērtību 2
+        if (you >= 8 || date >= 8)
+        {
+            return 2;
+        }
+
+        // 3. Citādi atgriežam vērību 1
+        return 1;
     }
+
 
     /// <summary>
     /// The squirrels in Palo Alto spend most of the day playing. In particular, they play if the
@@ -51,8 +88,25 @@ public class Logic1
     /// </summary>
     public bool SquirrelPlay(int temp, bool isSummer)
     {
-        throw new NotImplementedException();
+        // 1. Ja tempereatūra ir virs 60 un zem 90 (nav vasara) tad atgriežam vērtību true
+        if (temp < 60) 
+        {
+            return false;
+        }
+        int maxTemp = 90;
+        if (isSummer)
+        {
+            maxTemp += 10;
+        }
+        // 2. Ja tempereatūra ir virs 60 un zem 100 un ir vasara tad atgriežam vērtību true
+        if (temp <= maxTemp)
+            {
+            return true;
+        }
+            // 3. citādi false
+            return false;
     }
+
 
     /// <summary>
     /// You are driving a little too fast, and a police officer stops you. Write code to compute the
