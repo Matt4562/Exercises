@@ -121,8 +121,29 @@ public class Logic1
     /// </summary>
     public int CaughtSpeeding(int speed, bool isBirthday)
     {
-        throw new NotImplementedException();
+        // Ja ir dzimšanas diena, tad samazinām pieņemto ātrumu par 5
+        if (isBirthday)
+        {
+            speed -= 5;
+        }
+
+        // Ja ātrums ir mazāks vai vienāds ar 60, tad nav sods / atgriežam vērtību 0;
+        if (speed <= 60)
+        {
+            return 0;
+        }
+
+        // Ja ātrums ir lielāks vai vienāds ar 81 tad sods ir liels / atgriežam vērtību 2
+        if (speed >= 81)
+        {
+            return 2;
+        }
+
+        // Visos citos gadījumos secinām, ka vērtība būs starp 60 un 81
+        // Attiecīgi atgriežam mazs sods / atgriežam vērtību 1
+        return 1;
     }
+
 
     /// <summary>
     /// Given 2 ints, a and b, return their sum. However, sums in the range 10..19 inclusive, are
@@ -134,7 +155,14 @@ public class Logic1
     /// </summary>
     public int SortaSum(int a, int b)
     {
-        throw new NotImplementedException();
+       int sum = a+b;
+        {
+            if (sum >= 10 && sum <= 19)
+            {
+                return 20;
+            }
+            return sum;
+        }
     }
 
     /// <summary>
@@ -150,8 +178,39 @@ public class Logic1
     /// </summary>
     public string AlarmClock(int day, bool vacation)
     {
-        throw new NotImplementedException();
+        // Piedefinējam 3 iespējamās atgriežamās vērtības balstoties uz uzdevuma nosacījumiem
+        string early = "7:00";
+        string late = "10:00";
+        string off = "off";
+
+        // Ja ir brīvdiena (sestdiena vai svētdiena)
+        if (day == 0 || day == 6)
+        {
+            // Ja ir atvaļinājums
+            // Tad modinātājam nav jābūt ieslēgtam
+            if (vacation)
+            {
+                return off;
+            }
+
+            // Citādi modinātājam ir jābūt vēlu
+            return late;
+        }
+
+        // Pēc iepriekšējās pārbaudes tagad zinam, ka ir darba diena
+
+        // Ja ir atvaļinājums un ir darba diena
+        // Tad liekam modinātāju vēlu
+        if (vacation)
+        {
+            return late;
+        }
+
+        // Tagad zinām, ka ir darba diena un nav atvaļinājums
+        // Tad liekam modinātāju agri
+        return early;
     }
+
 
     /// <summary>
     /// The number 6 is a truly great number. Given two int values, a and b, return true if either
@@ -164,7 +223,21 @@ public class Logic1
     /// </summary>
     public bool Love6(int a, int b)
     {
-        throw new NotImplementedException();
+        if (a == 6 || b == 6)
+        {
+            return true;
+        }
+        if (a + b == 6)
+        {
+            return true;
+        }
+        int substracted = a - b;
+        int diff = Math.Abs(substracted);
+        if (diff == 6)
+        {
+            return true;
+        }
+        return false;
     }
 
     /// <summary>
